@@ -11,6 +11,7 @@
 ## The dealer will draw until they have a score >= 17
 ## The computer is the dealer.
 
+#Art module used to import ASCI logo
 import art
 import random
 
@@ -20,10 +21,12 @@ number_of_decks = 1
 
 cards = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","A"]
 score = [1,2,3,4,5,6,7,8,9,10,10,10,10,[1,11]]
+
+# Create a dictionary with the cards as keys and their scores as values
 deck = dict(zip(cards,score))
 
 
-
+# Aces can be 1 or 11. Without going bust, two aces can have a score of 12 or 2. This repeats in (n+10,n) where n is the number of aces (for n >= 1)
 ace_scores = {}
 ace_scores[0]= [0]
 for aces in range(1,12):
@@ -32,13 +35,17 @@ for aces in range(1,12):
 
 def score_calculator(hand):
   score = 0
+  #count number of aces
   ace_count = hand.count("A")
+  
+  #This is the hard score i.e. only one value exists as it contains no aces
   hard_deck = [card for card in hand if card != "A"]
 
-  
+  #calculate score without aces first
   for card in hard_deck:
     score += deck[card]
 
+  # first try adding the max value for n aces. If it results in a score over 21 then use the min value. Ex) two aces: first add 12 (max score). If > 21 then use min value
   if score + max(ace_scores[ace_count]) <= 21:
     score += max(ace_scores[ace_count])
   else:
@@ -86,10 +93,11 @@ def blackjack():
   
   # Draw two cards at random for the player
   for i in range(0,2):
+    
     player_cards.append(draw_card(complete_deck))
-    complete_deck.remove(player_cards[-1])
+    complete_deck.remove(player_cards[-1]) #Remove card that was drawn from the deck
     dealer_cards.append(draw_card(complete_deck))
-    complete_deck.remove(dealer_cards[-1])
+    complete_deck.remove(dealer_cards[-1]) #Remove card that was drawn from the deck
 
   player_choice = True
 
