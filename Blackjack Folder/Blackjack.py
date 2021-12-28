@@ -11,7 +11,6 @@
 ## The dealer will draw until they have a score >= 17
 ## The computer is the dealer.
 
-
 import art
 import random
 
