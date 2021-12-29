@@ -16,8 +16,7 @@ import art
 import random
 
 #number of decks used in a game
-number_of_decks = 1 
-
+number_of_decks = 1
 
 cards = ["1","2","3","4","5","6","7","8","9","10","J","Q","K","A"]
 score = [1,2,3,4,5,6,7,8,9,10,10,10,10,[1,11]]
