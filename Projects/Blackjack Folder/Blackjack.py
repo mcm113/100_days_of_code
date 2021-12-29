@@ -4,7 +4,7 @@
 ############### Our Blackjack House Rules #####################
 
 ## The deck is size n. It is a configurable number
-## There are no jokers. 
+## There are no jokers.
 ## The Jack/Queen/King all count as 10.
 ## The the Ace can count as 11 or 1.
 ## Cards are removed from the deck as they are drawn.
@@ -30,8 +30,8 @@ deck = dict(zip(cards,score))
 ace_scores = {}
 ace_scores[0]= [0]
 for aces in range(1,12):
-  ace_scores[aces] = [aces+10,aces*1]
-
+    ace_scores[aces] = [aces+10,aces*1]
+  
 
 def score_calculator(hand):
   score = 0
